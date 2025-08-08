@@ -10,21 +10,26 @@
 # Input: "aabb"
 # Output: -1
 
-def firstUniqueCharacter(s: str):
-    result = -1
-    dublicated = ""
+from collections import Counter
 
-    for i, letter in enumerate(s):
-        if letter in s[i+1:]:
-            dublicated += letter
-            continue
-        else:
-            if letter in dublicated:
-                continue
-            else:
-                result = letter
-                break
-    return result
+def firstUniqueCharacter(s: str) -> int:
+    # result = -1
+    # dublicated = ""
+    counts = Counter(s)
 
-s = "leetcode"
-print(firstUniqueCharacter(s))
+    for i, ch in enumerate(s):
+        if counts[ch] == 1:
+            return i
+        # if ch in s[i+1:]:
+        #     dublicated += letter
+        #     continue
+        # else:
+        #     if ch in dublicated:
+        #         continue
+        #     else:
+        #         result = i
+        #         break
+    return -1
+
+
+print(firstUniqueCharacter("leetcode"))
