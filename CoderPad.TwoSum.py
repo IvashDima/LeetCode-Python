@@ -18,30 +18,35 @@ from functools import reduce
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
-    result = []
-    i = 0
-    j = len(nums)-1
-    while i < j:
-        print(nums[i]+nums[j])
-        while i < j:
-            if nums[i]+nums[j] == target:
-                result.append(nums[i])
-                result.append(nums[j])
-                return result
-            else:
-                i += 1
-        i = 0
-        while i < j:
-            if nums[i]+nums[j] == target:
-                result.append(nums[i])
-                result.append(nums[j])
-                return result
-            else:
-                j -= 1
-        i += 1
-        j -= 1
+    # result = []
+    # i = 0
+    # j = len(nums)-1
+    # while i < j:
+    #     while i < j:
+    #         if nums[i]+nums[j] == target:
+    #             result.append(i)
+    #             result.append(j)
+    #             return result
+    #         else:
+    #             i += 1
+    #     i = 0
+    #     while i < j:
+    #         if nums[i]+nums[j] == target:
+    #             result.append(i)
+    #             result.append(j)
+    #             return result
+    #         else:
+    #             j -= 1
+    #     i += 1
+    #     j -= 1
+    # return result
+    seen = {}
+    for i, num in enumerate(nums):
+        diff = target - num
+        if diff in seen:
+            return [seen[diff], i]
+        seen[num] = i
+        print(seen)
 
-    return result
 
-
-print(twoSum([3,3], 6))
+print(twoSum([3,2,4], 6))
